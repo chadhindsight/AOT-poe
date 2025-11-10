@@ -1,7 +1,9 @@
 const https = require("https");
 const products = require("./products");
 
-// Helper: fetch weather from OpenWeather
+// ---------------------------
+// Weather helpers
+// ---------------------------
 function getWeather(city) {
   return new Promise((resolve, reject) => {
     const apiKey = process.env.OPENWEATHER_API_KEY;
@@ -13,10 +15,10 @@ function getWeather(city) {
       let data = "";
       res.on("data", (chunk) => (data += chunk));
       res.on("end", () => {
-        if (res.statusCode !== 200) return reject(new Error(`Weather API error: ${res.statusCode}`));
+        if (res.statusCode !== 200)
+          return reject(new Error(`Weather API error: ${res.statusCode}`));
         try {
-          const json = JSON.parse(data);
-          resolve(json);
+          resolve(JSON.parse(data));
         } catch (err) {
           reject(err);
         }
@@ -25,7 +27,6 @@ function getWeather(city) {
   });
 }
 
-// Helper: format weather nicely
 function formatWeather(weatherData) {
   const city = weatherData.name;
   const country = weatherData.sys.country;
@@ -47,47 +48,92 @@ function formatWeather(weatherData) {
 • Wind Speed: ${wind.speed || 0} m/s`;
 }
 
-// Helper: find product info
+// ---------------------------
+// Product helpers
+// ---------------------------
 function getProductInfo(query) {
-  const lower = query.toLowerCase();
-  const matched = products.filter(p => lower.includes(p.name.toLowerCase()));
+  const lowerQuery = query.toLowerCase();
+
+  // 1. Match by keywords in product name or type
+  const matched = products.filter((p) => {
+    const name = p.name.toLowerCase();
+    return lowerQuery
+      .split(/\s+/)
+      .some((word) => name.includes(word) || p.type?.toLowerCase()?.includes(word));
+  });
+
+  // 2. Check special commands
+  if (/cheapest/.test(lowerQuery)) {
+    const cheapest = [...products].sort((a, b) => a.price - b.price)[0];
+    const price = cheapest.discount ? (cheapest.price * 0.85).toFixed(2) : cheapest.price.toFixed(2);
+    return `🏄 Cheapest board: ${cheapest.name} - $${price} (${cheapest.stock} in stock) ${cheapest.discount ? "🔥 15% OFF!" : ""}`;
+  }
+
+  if (/most expensive|priciest/.test(lowerQuery)) {
+    const expensive = [...products].sort((a, b) => b.price - a.price)[0];
+    const price = expensive.discount ? (expensive.price * 0.85).toFixed(2) : expensive.price.toFixed(2);
+    return `🏄 Most expensive board: ${expensive.name} - $${price} (${expensive.stock} in stock) ${expensive.discount ? "🔥 15% OFF!" : ""}`;
+  }
 
   if (matched.length === 0) return "No matching surfboards or accessories found.";
 
-  return matched.map(p => {
-    const price = p.discount ? (p.price * 0.85).toFixed(2) : p.price.toFixed(2);
-    return `🏄 ${p.name} - $${price} (${p.stock} in stock) ${p.discount ? "🔥 15% OFF!" : ""}`;
-  }).join("\n");
+  return matched
+    .map((p) => {
+      const price = p.discount ? (p.price * 0.85).toFixed(2) : p.price.toFixed(2);
+      return `🏄 ${p.name} - $${price} (${p.stock} in stock) ${p.discount ? "🔥 15% OFF!" : ""}`;
+    })
+    .join("\n");
 }
 
-// Parse intent
-function parseIntent(message) {
+// ---------------------------
+// Intent helpers
+// ---------------------------
+function parseIntents(message) {
   const msg = message.toLowerCase();
-  if (/(weather|temperature|forecast|surf)/.test(msg)) return "weather";
-  if (/(surfboard|board|wax|accessory|price|stock|discount)/.test(msg)) return "product";
-  return "general";
+  const intents = [];
+
+  if (/(surfboard|board|wax|accessory|price|stock|discount|cheapest|most expensive)/.test(msg)) intents.push("product");
+  if (/(weather|temperature|forecast|surf)/.test(msg) && !/surfboard|board/.test(msg)) intents.push("weather");
+  if (intents.length === 0) intents.push("general");
+
+  return intents;
 }
 
-// Main entry: returns formatted reply
+function extractCity(message) {
+  const match = message.match(/in ([a-zA-Z\s]+)/i);
+  if (!match) return null;
+  return match[1].trim().replace(/[?.!]/g, "");
+}
+
+// ---------------------------
+// Main bot response
+// ---------------------------
 async function getBotResponse(userMessage) {
-  const intent = parseIntent(userMessage);
+  const intents = parseIntents(userMessage);
+  const replies = [];
 
   try {
-    if (intent === "weather") {
-      // extract city
-      const match = userMessage.match(/in ([a-zA-Z\s]+)/i);
-      const city = match ? match[1].trim() : null;
-      if (!city) return "Please specify a city for the weather.";
-      const weatherData = await getWeather(city);
-      return formatWeather(weatherData);
+    for (const intent of intents) {
+      if (intent === "weather") {
+        const city = extractCity(userMessage);
+        if (!city) {
+          replies.push("Please specify a city for the weather.");
+        } else {
+          const weatherData = await getWeather(city);
+          replies.push(formatWeather(weatherData));
+        }
+      }
+
+      if (intent === "product") {
+        replies.push(getProductInfo(userMessage));
+      }
+
+      if (intent === "general") {
+        replies.push("🏄‍♂️ Ask me about our surfboards, accessories, discounts, or the current weather for surfing!");
+      }
     }
 
-    if (intent === "product") {
-      return getProductInfo(userMessage);
-    }
-
-    // fallback/general
-    return "🏄‍♂️ Ask me about our surfboards, accessories, discounts, or the current weather for surfing!";
+    return replies.join("\n\n");
   } catch (err) {
     console.error("Bot logic error:", err);
     return "⚠️ Sorry, I couldn't process your request. Try again!";

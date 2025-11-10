@@ -17,7 +17,7 @@ app.get("/", (req, res) => res.send("Surfboard Bot server alive!"));
 app.post("/webhook", async (req, res) => {
   const { access_key, user_message } = req.body;
 
-  if (access_key !== process.env.SURF_BOT_ACCESS_KEY) {
+  if (access_key !== process.env.POE_BOT_ACCESS_KEY) {
     return res.status(403).json({ error: "Invalid access key" });
   }
 
