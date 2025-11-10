@@ -22,10 +22,14 @@ app.post("/chat", async (req, res) => {
         "Authorization": `Bearer ${process.env.POE_API_KEY}`,
         "Content-Type": "application/json",
       },
+      // body: JSON.stringify({
+      //   model: "gpt-4o-mini",
+      //   messages: [{ role: "user", content: userMessage }]
+      // }),
       body: JSON.stringify({
         model: "gpt-4o-mini",
         messages: [{ role: "user", content: userMessage }]
-      }),
+      })
     });
 
     if (!response.ok) {
