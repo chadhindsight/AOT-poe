@@ -54,26 +54,42 @@ function formatWeather(weatherData) {
 function getProductInfo(query) {
   const lowerQuery = query.toLowerCase();
 
-  // 1. Match by keywords in product name or type
-  const matched = products.filter((p) => {
-    const name = p.name.toLowerCase();
-    return lowerQuery
-      .split(/\s+/)
-      .some((word) => name.includes(word) || p.type?.toLowerCase()?.includes(word));
-  });
+  // 1️⃣ Discounts
+  if (/discounts?|on sale|sale/i.test(lowerQuery)) {
+    const discounted = products.filter((p) => p.discount);
+    if (discounted.length === 0) return "No products are currently on discount.";
+    return discounted
+      .map(
+        (p) =>
+          `🏄 ${p.name} - $${(p.price * 0.85).toFixed(2)} (${p.stock} in stock) 🔥 15% OFF!`
+      )
+      .join("\n");
+  }
 
-  // 2. Check special commands
-  if (/cheapest/.test(lowerQuery)) {
+  // 2️⃣ Cheapest
+  if (/cheapest/i.test(lowerQuery)) {
     const cheapest = [...products].sort((a, b) => a.price - b.price)[0];
     const price = cheapest.discount ? (cheapest.price * 0.85).toFixed(2) : cheapest.price.toFixed(2);
-    return `🏄 Cheapest board: ${cheapest.name} - $${price} (${cheapest.stock} in stock) ${cheapest.discount ? "🔥 15% OFF!" : ""}`;
+    return `🏄 Cheapest board: ${cheapest.name} - $${price} (${cheapest.stock} in stock) ${
+      cheapest.discount ? "🔥 15% OFF!" : ""
+    }`;
   }
 
-  if (/most expensive|priciest/.test(lowerQuery)) {
+  // 3️⃣ Most expensive
+  if (/most expensive|priciest/i.test(lowerQuery)) {
     const expensive = [...products].sort((a, b) => b.price - a.price)[0];
     const price = expensive.discount ? (expensive.price * 0.85).toFixed(2) : expensive.price.toFixed(2);
-    return `🏄 Most expensive board: ${expensive.name} - $${price} (${expensive.stock} in stock) ${expensive.discount ? "🔥 15% OFF!" : ""}`;
+    return `🏄 Most expensive board: ${expensive.name} - $${price} (${expensive.stock} in stock) ${
+      expensive.discount ? "🔥 15% OFF!" : ""
+    }`;
   }
+
+  // 4️⃣ Match by product name/type
+  const matched = products.filter((p) =>
+    lowerQuery
+      .split(/\s+/)
+      .some((word) => p.name.toLowerCase().includes(word) || p.type?.toLowerCase()?.includes(word))
+  );
 
   if (matched.length === 0) return "No matching surfboards or accessories found.";
 
@@ -92,8 +108,10 @@ function parseIntents(message) {
   const msg = message.toLowerCase();
   const intents = [];
 
-  if (/(surfboard|board|wax|accessory|price|stock|discount|cheapest|most expensive)/.test(msg)) intents.push("product");
-  if (/(weather|temperature|forecast|surf)/.test(msg) && !/surfboard|board/.test(msg)) intents.push("weather");
+  if (/(surfboard|board|wax|accessory|price|stock|discount|cheapest|most expensive)/.test(msg))
+    intents.push("product");
+  if (/(weather|temperature|forecast|surf)/.test(msg) && !/surfboard|board/.test(msg))
+    intents.push("weather");
   if (intents.length === 0) intents.push("general");
 
   return intents;
@@ -129,7 +147,9 @@ async function getBotResponse(userMessage) {
       }
 
       if (intent === "general") {
-        replies.push("🏄‍♂️ Ask me about our surfboards, accessories, discounts, or the current weather for surfing!");
+        replies.push(
+          "🏄‍♂️ Ask me about our surfboards, accessories, discounts, or the current weather for surfing!"
+        );
       }
     }
 
