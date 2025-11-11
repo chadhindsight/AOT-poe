@@ -52,10 +52,10 @@ function formatWeather(weatherData) {
 // Product helpers
 // ---------------------------
 function getProductInfo(query) {
-  const lowerQuery = query.toLowerCase();
+  const lowerCaseQuery = query.toLowerCase();
 
   // 1️⃣ Discounts
-  if (/discounts?|on sale|sale/i.test(lowerQuery)) {
+  if (/discounts?|on sale|sale/i.test(lowerCaseQuery)) {
     const discounted = products.filter((p) => p.discount);
     if (discounted.length === 0) return "No products are currently on discount.";
     return discounted
@@ -67,7 +67,7 @@ function getProductInfo(query) {
   }
 
   // 2️⃣ Cheapest
-  if (/cheapest/i.test(lowerQuery)) {
+  if (/cheapest/i.test(lowerCaseQuery)) {
     const cheapest = [...products].sort((a, b) => a.price - b.price)[0];
     const price = cheapest.discount ? (cheapest.price * 0.85).toFixed(2) : cheapest.price.toFixed(2);
     return `🏄 Cheapest board: ${cheapest.name} - $${price} (${cheapest.stock} in stock) ${
@@ -76,7 +76,7 @@ function getProductInfo(query) {
   }
 
   // 3️⃣ Most expensive
-  if (/most expensive|priciest/i.test(lowerQuery)) {
+  if (/most expensive|priciest/i.test(lowerCaseQuery)) {
     const expensive = [...products].sort((a, b) => b.price - a.price)[0];
     const price = expensive.discount ? (expensive.price * 0.85).toFixed(2) : expensive.price.toFixed(2);
     return `🏄 Most expensive board: ${expensive.name} - $${price} (${expensive.stock} in stock) ${
@@ -86,7 +86,7 @@ function getProductInfo(query) {
 
   // 4️⃣ Match by product name/type
   const matched = products.filter((p) =>
-    lowerQuery
+    lowerCaseQuery
       .split(/\s+/)
       .some((word) => p.name.toLowerCase().includes(word) || p.type?.toLowerCase()?.includes(word))
   );
@@ -148,7 +148,7 @@ async function getBotResponse(userMessage) {
 
       if (intent === "general") {
         replies.push(
-          "🏄‍♂️ Ask me about our surfboards, accessories, discounts, or the current weather for surfing!"
+          "🏄‍♂️ Ask me about our surfboards, accessories, discounts, or the current weather for surfing in your area!"
         );
       }
     }
