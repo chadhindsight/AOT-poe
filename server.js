@@ -33,7 +33,7 @@ app.post("/webhook", async (req, res) => {
   }
 });
 
-// Products API endpoint
+// Products endpoint
 app.get("/products", (req, res) => {
   try {
     console.log(products)
