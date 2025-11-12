@@ -3,7 +3,7 @@ const cors = require("cors");
 require("dotenv").config();
 
 const { getBotResponse } = require("./botLogic");
-const {products} = require("./products")
+const products = require("./products");
 
 const app = express();
 const PORT = process.env.PORT || 10000;
@@ -36,6 +36,7 @@ app.post("/webhook", async (req, res) => {
 // Products API endpoint
 app.get("/products", (req, res) => {
   try {
+    console.log(products)
     res.json(products);
   } catch (err) {
     console.error("Products API error:", err);
