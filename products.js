@@ -1,5 +1,3 @@
-// products.js
-
 const products = [
   // 🏄 Surfboards
   {
