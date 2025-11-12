@@ -6,7 +6,7 @@ const products = [
     price: 399.99,
     stock: 15,
     discount: true,
-    image: "https://example.com/images/breeze.jpg",
+    image: "https://images.unsplash.com/photo-1547949003-9792a18a2601?auto=format&fit=crop&w=500&q=80",
     description: "Beginner-to-intermediate board. Stable, forgiving, and easy to paddle. Great all-rounder for most conditions.",
   },
   {
@@ -15,7 +15,7 @@ const products = [
     price: 299.99,
     stock: 20,
     discount: false,
-    image: "https://example.com/images/mini.jpg",
+    image: "https://images.unsplash.com/photo-1518638150340-f706e86654de?auto=format&fit=crop&w=500&q=80",
     description: "Fun, agile board for small waves or young surfers. Lightweight and playful — perfect for groms or beach breaks.",
   },
   {
@@ -24,7 +24,7 @@ const products = [
     price: 499.99,
     stock: 12,
     discount: true,
-    image: "https://example.com/images/thunder.jpg",
+    image: "https://images.unsplash.com/photo-1502680390469-be75c86b636f?auto=format&fit=crop&w=500&q=80",
     description: "High-performance shortboard for experienced surfers. Built for speed, control, and radical maneuvers.",
   },
   {
@@ -33,7 +33,7 @@ const products = [
     price: 549.99,
     stock: 8,
     discount: false,
-    image: "https://example.com/images/lightning.jpg",
+    image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=500&q=80",
     description: "Top-tier shortboard for precision and power. Excels in hollow, fast waves where responsiveness matters.",
   },
   {
@@ -42,7 +42,7 @@ const products = [
     price: 599.99,
     stock: 4,
     discount: false,
-    image: "https://example.com/images/paddle_board.jpg",
+    image: "https://images.unsplash.com/photo-1590627827653-063ba90b2d11?auto=format&fit=crop&w=500&q=80",
     description: "Stable, versatile stand-up paddleboard for fitness or calm surf. Great for families and beginners.",
   },
   {
@@ -51,7 +51,7 @@ const products = [
     price: 349.99,
     stock: 10,
     discount: true,
-    image: "https://example.com/images/junior_board.jpg",
+    image: "https://images.unsplash.com/photo-1590077428593-a55bb07c4665?auto=format&fit=crop&w=500&q=80",
     description: "Lightweight board made for young surfers. Offers excellent stability and control to build confidence.",
   },
 
@@ -62,7 +62,7 @@ const products = [
     price: 19.99,
     stock: 50,
     discount: true,
-    image: "https://example.com/images/pro_wax.jpg",
+    image: "https://images.unsplash.com/photo-1590077428593-a55bb07c4665?auto=format&fit=crop&w=500&q=80",
     description: "All-temperature premium wax for consistent grip in most conditions. Reliable and eco-friendly formula.",
   },
   {
@@ -71,7 +71,7 @@ const products = [
     price: 14.99,
     stock: 35,
     discount: false,
-    image: "https://example.com/images/tropical_wax.jpg",
+    image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=500&q=80",
     description: "Formulated for warm water (70°F+). Hard texture prevents melting in tropical sun.",
   },
   {
@@ -80,7 +80,7 @@ const products = [
     price: 17.99,
     stock: 40,
     discount: false,
-    image: "https://example.com/images/cold_wax.jpg",
+    image: "https://images.unsplash.com/photo-1547949003-9792a18a2601?auto=format&fit=crop&w=500&q=80",
     description: "For cold water below 58°F. Soft, grippy texture stays tacky even in icy conditions.",
   },
 
@@ -91,7 +91,7 @@ const products = [
     price: 29.99,
     stock: 25,
     discount: true,
-    image: "https://example.com/images/leash.jpg",
+    image: "https://images.unsplash.com/photo-1502680390469-be75c86b636f?auto=format&fit=crop&w=500&q=80",
     description: "Durable leash with comfortable ankle cuff and anti-tangle swivel. Essential for safety.",
   },
   {
@@ -100,7 +100,7 @@ const products = [
     price: 49.99,
     stock: 18,
     discount: true,
-    image: "https://example.com/images/fins.jpg",
+    image: "https://images.unsplash.com/photo-1518638150340-f706e86654de?auto=format&fit=crop&w=500&q=80",
     description: "High-performance thruster fin set for better drive and control. Works in most conditions.",
   },
   {
@@ -109,7 +109,7 @@ const products = [
     price: 79.99,
     stock: 10,
     discount: false,
-    image: "https://example.com/images/board_bag.jpg",
+    image: "https://images.unsplash.com/photo-1590627827653-063ba90b2d11?auto=format&fit=crop&w=500&q=80",
     description: "Padded bag for travel and storage. Protects against dings, UV damage, and scratches.",
   },
   {
@@ -118,7 +118,7 @@ const products = [
     price: 199.99,
     stock: 7,
     discount: false,
-    image: "https://example.com/images/wetsuit_3_2.jpg",
+    image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=500&q=80",
     description: "Eco-friendly limestone neoprene wetsuit for 60–70°F waters. Lightweight, flexible, and warm.",
   },
   {
@@ -127,7 +127,7 @@ const products = [
     price: 249.99,
     stock: 5,
     discount: true,
-    image: "https://example.com/images/wetsuit_4_3.jpg",
+    image: "https://images.unsplash.com/photo-1547949003-9792a18a2601?auto=format&fit=crop&w=500&q=80",
     description: "Cold-weather wetsuit with sealed seams for 50–60°F conditions. Keeps you warm longer.",
   },
   {
@@ -136,7 +136,7 @@ const products = [
     price: 24.99,
     stock: 30,
     discount: false,
-    image: "https://example.com/images/repair_kit.jpg",
+    image: "https://images.unsplash.com/photo-1590077428593-a55bb07c4665?auto=format&fit=crop&w=500&q=80",
     description: "Quick-fix repair kit for dings and cracks. Everything you need to patch and get back out fast.",
   },
 ];
