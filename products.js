@@ -3,7 +3,7 @@ const products = [
   {
     name: "EcoWave Breeze",
     category: "Surfboard",
-    price: 399.99,
+    price: 799.99,
     stock: 15,
     discount: true,
     image: "https://images.unsplash.com/photo-1547949003-9792a18a2601?auto=format&fit=crop&w=500&q=80",
@@ -39,7 +39,7 @@ const products = [
   {
     name: "EcoWave Paddle Board",
     category: "Surfboard",
-    price: 599.99,
+    price: 899.99,
     stock: 4,
     discount: false,
     image: "https://images.unsplash.com/photo-1590627827653-063ba90b2d11?auto=format&fit=crop&w=500&q=80",
