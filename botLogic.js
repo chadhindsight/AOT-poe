@@ -83,8 +83,8 @@ function formatProductList(products, category = 'products') {
 
   return products.map(p => {
     const price = p.discount ? (p.price * 0.85).toFixed(2) : p.price.toFixed(2);
-    const discountTag = p.discount ? " 🔥 15% OFF!" : "";
-    return `🏄 ${p.name} - $${price} (${p.stock} in stock)${discountTag}`;
+    const discountTag = p.discount ? " - 15% OFF" : "";
+    return `🏄 ${p.name}: $${price} (${p.stock} in stock)${discountTag}`;
   }).join('\n');
 }
 
