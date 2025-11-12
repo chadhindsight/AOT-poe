@@ -121,7 +121,7 @@ function handleProductInquiry(query, userState) {
       if (discounted.length === 0) {
         return `No ${category.toLowerCase()} are currently on sale. Check out our other products though!`;
       }
-      return `Here are the ${category.toLowerCase()} currently on sale: 🔥\n\n${formatProductList(discounted, category.toLowerCase())}`;
+      return `Here are the ${category.toLowerCase()} currently on sale: \n\n${formatProductList(discounted, category.toLowerCase())}`;
     }
   }
 
@@ -136,13 +136,13 @@ function handleProductInquiry(query, userState) {
   if (/cheapest/.test(lowerQuery)) {
     const cheapest = [...products].sort((a, b) => a.price - b.price)[0];
     const price = cheapest.discount ? (cheapest.price * 0.85).toFixed(2) : cheapest.price.toFixed(2);
-    return `Our most affordable option is:\n🏄 ${cheapest.name} - $${price} ${cheapest.discount ? "🔥 15% OFF!" : ""}\n\nPerfect for beginners or those on a budget!`;
+    return `Our most affordable option is:\n🏄 ${cheapest.name} - $${price} ${cheapest.discount ? "15% OFF!" : ""}\n\nPerfect for beginners or those on a budget!`;
   }
 
   if (/most expensive|priciest/.test(lowerQuery)) {
     const expensive = [...products].sort((a, b) => b.price - a.price)[0];
     const price = expensive.discount ? (expensive.price * 0.85).toFixed(2) : expensive.price.toFixed(2);
-    return `Our premium high-performance option:\n🏄 ${expensive.name} - $${price} ${expensive.discount ? "🔥 15% OFF!" : ""}\n\nTop-tier quality for experienced surfers!`;
+    return `Our premium high-performance option:\n🏄 ${expensive.name} - $${price} ${expensive.discount ? "15% OFF!" : ""}\n\nTop-tier quality for experienced surfers!`;
   }
 
   // Handle follow-up responses
@@ -152,7 +152,7 @@ function handleProductInquiry(query, userState) {
     if (/(everything|all|show all)/.test(lowerQuery)) {
       const allDiscounted = getProductsByCategory('all', true);
       if (allDiscounted.length === 0) return "No products are currently on sale.";
-      return `Here's everything currently on sale: 🔥\n\n${formatProductList(allDiscounted, 'discounted products')}`;
+      return `Here's everything currently on sale: n\n${formatProductList(allDiscounted, 'discounted products')}`;
     }
     
     const category = getCategoryFromQuery(query);
@@ -161,7 +161,7 @@ function handleProductInquiry(query, userState) {
       if (discounted.length === 0) {
         return `No ${category.toLowerCase()} are currently on sale. Want to see our regular ${category.toLowerCase()} collection?`;
       }
-      return `Here are the ${category.toLowerCase()} on sale: 🔥\n\n${formatProductList(discounted, category.toLowerCase())}`;
+      return `Here are the ${category.toLowerCase()} on sale: n\n${formatProductList(discounted, category.toLowerCase())}`;
     }
     
     return "Sorry, I didn't understand. Would you like to see discounts on surfboards, wax, or accessories?";
