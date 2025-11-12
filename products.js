@@ -1,124 +1,146 @@
+// products.js
+
 const products = [
-  {
-    name: "EcoWave Thunder",
-    type: "board",
-    price: 499.99,
-    stock: 12,
-    discount: true,
-    image: "https://example.com/images/thunder.jpg"
-  },
-  {
-    name: "EcoWave Lightning",
-    type: "board",
-    price: 549.99,
-    stock: 8,
-    discount: false,
-    image: "https://example.com/images/lightning.jpg"
-  },
+  // 🏄 Surfboards
   {
     name: "EcoWave Breeze",
-    type: "board",
+    category: "Surfboard",
     price: 399.99,
     stock: 15,
     discount: true,
-    image: "https://example.com/images/breeze.jpg"
+    image: "https://example.com/images/breeze.jpg",
+    description: "Beginner-to-intermediate board. Stable, forgiving, and easy to paddle. Great all-rounder for most conditions.",
   },
   {
     name: "EcoWave Mini",
-    type: "board",
+    category: "Surfboard",
     price: 299.99,
     stock: 20,
     discount: false,
-    image: "https://example.com/images/mini.jpg"
+    image: "https://example.com/images/mini.jpg",
+    description: "Fun, agile board for small waves or young surfers. Lightweight and playful — perfect for groms or beach breaks.",
   },
   {
-    name: "EcoWave Pro Wax",
-    type: "wax",
-    price: 19.99,
-    stock: 50,
+    name: "EcoWave Thunder",
+    category: "Surfboard",
+    price: 499.99,
+    stock: 12,
     discount: true,
-    image: "https://example.com/images/pro_wax.jpg"
+    image: "https://example.com/images/thunder.jpg",
+    description: "High-performance shortboard for experienced surfers. Built for speed, control, and radical maneuvers.",
   },
   {
-    name: "EcoWave Tropical Wax",
-    type: "wax",
-    price: 14.99,
-    stock: 35,
+    name: "EcoWave Lightning",
+    category: "Surfboard",
+    price: 549.99,
+    stock: 8,
     discount: false,
-    image: "https://example.com/images/tropical_wax.jpg"
-  },
-  {
-    name: "EcoWave Cold Water Wax",
-    type: "wax",
-    price: 17.99,
-    stock: 40,
-    discount: false,
-    image: "https://example.com/images/cold_wax.jpg"
-  },
-  {
-    name: "EcoWave Surf Leash",
-    type: "accessory",
-    price: 29.99,
-    stock: 25,
-    discount: true,
-    image: "https://example.com/images/leash.jpg"
-  },
-  {
-    name: "EcoWave Board Bag",
-    type: "accessory",
-    price: 79.99,
-    stock: 10,
-    discount: false,
-    image: "https://example.com/images/board_bag.jpg"
-  },
-  {
-    name: "EcoWave Fins Set",
-    type: "accessory",
-    price: 49.99,
-    stock: 18,
-    discount: true,
-    image: "https://example.com/images/fins.jpg"
-  },
-  {
-    name: "EcoWave Eco Wetsuit 3/2mm",
-    type: "accessory",
-    price: 199.99,
-    stock: 7,
-    discount: false,
-    image: "https://example.com/images/wetsuit_3_2.jpg"
-  },
-  {
-    name: "EcoWave Eco Wetsuit 4/3mm",
-    type: "accessory",
-    price: 249.99,
-    stock: 5,
-    discount: true,
-    image: "https://example.com/images/wetsuit_4_3.jpg"
-  },
-  {
-    name: "EcoWave Surfboard Repair Kit",
-    type: "accessory",
-    price: 24.99,
-    stock: 30,
-    discount: false,
-    image: "https://example.com/images/repair_kit.jpg"
+    image: "https://example.com/images/lightning.jpg",
+    description: "Top-tier shortboard for precision and power. Excels in hollow, fast waves where responsiveness matters.",
   },
   {
     name: "EcoWave Paddle Board",
-    type: "board",
+    category: "Surfboard",
     price: 599.99,
     stock: 4,
     discount: false,
-    image: "https://example.com/images/paddle_board.jpg"
+    image: "https://example.com/images/paddle_board.jpg",
+    description: "Stable, versatile stand-up paddleboard for fitness or calm surf. Great for families and beginners.",
   },
   {
     name: "EcoWave Junior Board",
-    type: "board",
+    category: "Surfboard",
     price: 349.99,
     stock: 10,
     discount: true,
-    image: "https://example.com/images/junior_board.jpg"
-  }
+    image: "https://example.com/images/junior_board.jpg",
+    description: "Lightweight board made for young surfers. Offers excellent stability and control to build confidence.",
+  },
+
+  // 🧴 Wax
+  {
+    name: "EcoWave Pro Wax",
+    category: "Wax",
+    price: 19.99,
+    stock: 50,
+    discount: true,
+    image: "https://example.com/images/pro_wax.jpg",
+    description: "All-temperature premium wax for consistent grip in most conditions. Reliable and eco-friendly formula.",
+  },
+  {
+    name: "EcoWave Tropical Wax",
+    category: "Wax",
+    price: 14.99,
+    stock: 35,
+    discount: false,
+    image: "https://example.com/images/tropical_wax.jpg",
+    description: "Formulated for warm water (70°F+). Hard texture prevents melting in tropical sun.",
+  },
+  {
+    name: "EcoWave Cold Water Wax",
+    category: "Wax",
+    price: 17.99,
+    stock: 40,
+    discount: false,
+    image: "https://example.com/images/cold_wax.jpg",
+    description: "For cold water below 58°F. Soft, grippy texture stays tacky even in icy conditions.",
+  },
+
+  // 🎒 Accessories
+  {
+    name: "EcoWave Surf Leash",
+    category: "Accessory",
+    price: 29.99,
+    stock: 25,
+    discount: true,
+    image: "https://example.com/images/leash.jpg",
+    description: "Durable leash with comfortable ankle cuff and anti-tangle swivel. Essential for safety.",
+  },
+  {
+    name: "EcoWave Fins Set",
+    category: "Accessory",
+    price: 49.99,
+    stock: 18,
+    discount: true,
+    image: "https://example.com/images/fins.jpg",
+    description: "High-performance thruster fin set for better drive and control. Works in most conditions.",
+  },
+  {
+    name: "EcoWave Board Bag",
+    category: "Accessory",
+    price: 79.99,
+    stock: 10,
+    discount: false,
+    image: "https://example.com/images/board_bag.jpg",
+    description: "Padded bag for travel and storage. Protects against dings, UV damage, and scratches.",
+  },
+  {
+    name: "EcoWave Eco Wetsuit 3/2mm",
+    category: "Accessory",
+    price: 199.99,
+    stock: 7,
+    discount: false,
+    image: "https://example.com/images/wetsuit_3_2.jpg",
+    description: "Eco-friendly limestone neoprene wetsuit for 60–70°F waters. Lightweight, flexible, and warm.",
+  },
+  {
+    name: "EcoWave Eco Wetsuit 4/3mm",
+    category: "Accessory",
+    price: 249.99,
+    stock: 5,
+    discount: true,
+    image: "https://example.com/images/wetsuit_4_3.jpg",
+    description: "Cold-weather wetsuit with sealed seams for 50–60°F conditions. Keeps you warm longer.",
+  },
+  {
+    name: "EcoWave Surfboard Repair Kit",
+    category: "Accessory",
+    price: 24.99,
+    stock: 30,
+    discount: false,
+    image: "https://example.com/images/repair_kit.jpg",
+    description: "Quick-fix repair kit for dings and cracks. Everything you need to patch and get back out fast.",
+  },
 ];
 
 module.exports = products;
