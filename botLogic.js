@@ -218,7 +218,7 @@ function parseIntents(message) {
   const msg = message.toLowerCase();
   const intents = [];
 
-  if (/(surfboard|board|wax|accessory|price|stock|discount|cheapest|most expensive|buy|product)/.test(msg))
+  if (/(surfboard|board|wax|accessory|price|stock|thing|discount|cheapest|most expensive|buy|product)/.test(msg))
     intents.push("product");
   if (/(weather|temperature|forecast)/.test(msg) && !/surfboard|board/.test(msg))
     intents.push("weather");
