@@ -32,4 +32,14 @@ app.post("/webhook", async (req, res) => {
   }
 });
 
+// Products API endpoint
+app.get("/api/products", (req, res) => {
+  try {
+    res.json(products);
+  } catch (err) {
+    console.error("Products API error:", err);
+    res.status(500).json({ error: "Failed to fetch products" });
+  }
+});
+
 app.listen(PORT, () => console.log(`Surfboard Bot server running on port ${PORT}!`));
