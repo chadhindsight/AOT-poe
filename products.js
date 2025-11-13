@@ -33,7 +33,7 @@ const products = [
     price: 549.99,
     stock: 8,
     discount: false,
-    image: "/surfboard_pics/TJ_Pro_V.webp",
+    image: "/surfboard_pics/TJ_Hull_Rider.webp",
     description: "Top-tier shortboard for precision and power. Excels in hollow, fast waves where responsiveness matters.",
   },
   {
@@ -42,7 +42,7 @@ const products = [
     price: 899.99,
     stock: 4,
     discount: false,
-    image: "/surfboard_pics/TJ_Spaceship_L.webp",
+    image: "/surfboard_pics/TJ_Hull_Rider.webp",
     description: "Stable, versatile stand-up paddleboard for fitness or calm surf. Great for families and beginners.",
   },
   {
@@ -51,7 +51,7 @@ const products = [
     price: 349.99,
     stock: 10,
     discount: true,
-    image: "/surfboard_pics/PPD_thumb_s_boss_promo_sboss_ibook.webp",
+    image: "/surfboard_pics/TJ_Hull_Rider.webp",
     description: "Lightweight board made for young surfers. Offers excellent stability and control to build confidence.",
   },
 ];
