@@ -12,7 +12,7 @@ const products = [
   {
     name: "EcoWave Mini",
     category: "Surfboard",
-    price: 299.99,
+    price: 250.99,
     stock: 20,
     discount: false,
     image: "/surfboard_pics/TJ_Pro_T.webp",
