@@ -125,7 +125,7 @@ function handleProductInquiry(query, userState) {
     }
   }
 
-  // Handle category-specific requests
+  // Handles category-specific requests
   const category = getCategoryFromQuery(query);
   if (category !== 'all') {
     const categoryProducts = getProductsByCategory(category);
