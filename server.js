@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
+const path = require("path");
 
 const { getBotResponse } = require("./botLogic");
 const products = require("./products");
