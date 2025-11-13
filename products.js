@@ -54,5 +54,4 @@ const products = [
     image: "/surfboard_pics/PPD_thumb_s_boss_promo_sboss_ibook.webp",
     description: "Lightweight board made for young surfers. Offers excellent stability and control to build confidence.",
   },
-  // rest of file unchanged...
 ];
