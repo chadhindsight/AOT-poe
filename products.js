@@ -55,3 +55,5 @@ const products = [
     description: "Lightweight board made for young surfers. Offers excellent stability and control to build confidence.",
   },
 ];
+
+module.exports = products;
