@@ -11,6 +11,8 @@ const PORT = process.env.PORT || 10000;
 app.use(cors());
 app.use(express.json());
 
+app.use("/surfboard_pics", express.static(path.join(__dirname, "surfboard_pics")));
+
 // Health check
 app.get("/", (req, res) => res.send("Surfboard Bot server alive!"));
 
