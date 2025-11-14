@@ -30,7 +30,7 @@ const products = [
   {
     name: "EcoWave Lightning",
     category: "Surfboard",
-    price: 549.99,
+    price: 649.99,
     stock: 8,
     discount: false,
     image: "/surfboard_pics/TJ_Hull_Rider.webp",
